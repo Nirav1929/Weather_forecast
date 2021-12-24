@@ -1,0 +1,11 @@
+#!/bin/tcsh
+#BSUB -n 4
+#BSUB -W 3000
+#BSUB -q gpu
+#BSUB -gpu "num=1:mode=shared:mps=yes:"
+#BSUB -R "select[rtx2080|| gtx1080|| p100]"
+#BSUB -R "rusage[mem=12GB]"
+#BSUB -o out.sst
+#BSUB -e err.sst
+conda activate /usr/local/usrapps/rhe/conda_ocean
+python3 /gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/train.py
