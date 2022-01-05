@@ -1,3 +1,4 @@
+from tensorflow.keras.models import Model
 import tensorflow as tf
 from tensorflow.python.keras.layers import Input, Conv3D, BatchNormalization, Dropout, MaxPool3D, Flatten, Dense, \
     Reshape, Conv3DTranspose, GlobalAveragePooling3D, UpSampling3D
@@ -57,8 +58,8 @@ class CnnAutoEncoder:
         self.decoder = Conv3DTranspose(8, (3, 3, 3), activation='relu', padding='same')(self.decoder)
         self.decoder = BatchNormalization()(self.decoder)
         # self.decoder = UpSampling2D(size=(1, 2))(self.decoder)
-        self.decoded = Conv3D(3, (3, 3, 3), activation='linear', padding='same')(self.decoder)
+        self.decoder = Conv3D(3, (3, 3, 3), activation='linear', padding='same')(self.decoder)
 
     def forward(self):
-        self.auto_encoder = tf.keras.Model(self.inp, self.decoded)
+        self.auto_encoder = Model(self.inp, self.decoder)
         return self.auto_encoder

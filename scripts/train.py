@@ -3,6 +3,7 @@ import sys
 import numpy as np
 from tensorflow import keras
 from tensorflow.keras import layers
+from tensorflow.keras.models import Model, load_model
 import tensorflow as tf
 import pickle
 import pandas as pd
@@ -40,9 +41,8 @@ sys.path.append('..')
 #                      workers=6)
 
 def root_mean_squared_error(y_true, y_pred):
-    loss = K.sqrt(K.mean(K.square(y_pred - y_true)))
-    print("loss", loss)
-    return loss
+    return K.sqrt(K.mean(K.square(y_pred - y_true)))
+
 
 
 def train_init(num_days, img_path, img_shape, model, optimizer, num_epochs, batch_size, save_interval):
@@ -68,19 +68,19 @@ def train_init(num_days, img_path, img_shape, model, optimizer, num_epochs, batc
     model.compile(optimizer=optimizer, loss=root_mean_squared_error)
     for epoch in range(num_epochs):
         model.fit(data_generator_obj, epochs=1, use_multiprocessing=True, workers=16)
-        model.save("./" + "model_after" + str(epoch))
+        model.save_weights("./model" + "model_after" + str(epoch))
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--num_epochs', help='Number of epochs for which the model will run', type=int, default=10)
+    parser.add_argument('--num_epochs', help='Number of epochs for which the model will run', type=int, default=5)
     parser.add_argument('--learning_rate', help='Set learning rate for the model', type=float, default=1e-4)
     parser.add_argument('--image_path',
                         help='Describe the image df path which store image patha and corresponding label',
                         type=str, default='/gpfs_common/share02/rhe/nkpatel8/SST_imgs/')
     parser.add_argument('--batch_size', help="Set the batch size", type=int, default=1)
     parser.add_argument('--save_interval', help='Number of epcohs interval after which we save result and model',
-                        type=int, default=10
+                        type=int, default=2
                         )
     parser.add_argument('--num_days', help='Number of days interval for which we do the forecasting',
                         type=int, default=32
