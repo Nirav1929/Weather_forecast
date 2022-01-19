@@ -7,12 +7,14 @@ import tensorflow as tf
 from tensorflow import keras
 from PIL import Image
 from sklearn.model_selection import train_test_split
+import re
 
 
 class DataGenerator(keras.utils.Sequence):
     """Generates data for Keras"""
 
-    def __init__(self, image_path, input_shape=(512, 512, 3), batch_size=120, channels=3, steps_in=30, steps_out=30):
+    def __init__(self, df, image_path, input_shape=(512, 512, 3), batch_size=120, channels=3, steps_in=30,
+                 steps_out=30):
         self.batch_size = batch_size
         self.input_shape = input_shape
         self.img_path = Path(image_path)
@@ -21,15 +23,13 @@ class DataGenerator(keras.utils.Sequence):
         self.channels = channels
         self.steps_in = steps_in
         self.steps_out = steps_out
-        print("num_of_images in input ", self.num_imgs)
-        self.df = pd.DataFrame(columns=['img_name'])
-        for i in range(self.num_imgs):
-            self.df.loc[i] = ["day_" + str(i)]
+        self.df = df
+        self.n = len(self.df)
 
     def create_train_val_split(self, val_split=0.2):
-        self.df_train, self.df_val = train_test_split(self.df, test_size=val_split)
+        df_train, df_val = train_test_split(self.df, test_size=val_split)
         print(df_train.shape, df_val.shape)
-        return self.df_train, self.df_val
+        return df_train, df_val
 
     def add_padding(self, img):
         ww, hh, cc = self.input_shape
@@ -48,25 +48,32 @@ class DataGenerator(keras.utils.Sequence):
         out_end_ix = index + self.steps_out
         # gather input and output parts of the pattern
         seq_x, seq_y = list(), list()
+        iob = False
+        oob = False
         # check if we are beyond the sequence
-        if in_end_ix < 0 or out_end_ix > len(df):
+        if in_end_ix < 0:
             img = np.array(Image.open(self.img_path / f"day_{index}.jpeg"), dtype=np.float64)
             img = self.add_padding(img)
             for idx in range(self.steps_in):
                 seq_x.append(img)
+            iob = True
+        if out_end_ix > self.num_imgs - 1:
             for idx in range(self.steps_out):
                 seq_y.append(img)
-            return seq_x, seq_y
+            oob = True
+        # if iob:
+        #     return np.asarray(seq_x).astype(float), np.asarray(seq_y).astype(float)
 
-        for idx in range(in_end_ix, index):
-            img = np.array(Image.open(self.img_path / f"day_{idx}.jpeg"), dtype=np.float64)
-            img = self.add_padding(img)
-            seq_x.append(img)
-
-        for idx in range(index, out_end_ix):
-            img = np.array(Image.open(self.img_path / f"day_{idx}.jpeg"), dtype=np.float64)
-            img = self.add_padding(img)
-            seq_y.append(img)
+        if not iob :
+            for idx in range(in_end_ix, index):
+                img = np.array(Image.open(self.img_path / f"day_{idx}.jpeg"), dtype=np.float64)
+                img = self.add_padding(img)
+                seq_x.append(img)
+        if not oob:
+            for idx in range(index, out_end_ix):
+                img = np.array(Image.open(self.img_path / f"day_{idx}.jpeg"), dtype=np.float64)
+                img = self.add_padding(img)
+                seq_y.append(img)
         return np.asarray(seq_x).astype(float), np.asarray(seq_y).astype(float)
 
     def __get_data(self, batch_indices):
@@ -82,16 +89,17 @@ class DataGenerator(keras.utils.Sequence):
                 Y_batches.append(yy)
                 # np.append(X_batches, xx, axis=0)
                 # np.append(Y_batches, yy, axis=0)
-        # batch = [np.stack(samples, axis=0) for samples in zip(X_batches, Y_batches)]
+            # batch = [np.stack(samples, axis=0) for samples in zip(X_batches, Y_batches)]
             else:
                 return None, None
         return np.asarray(X_batches), np.asarray(Y_batches)
         # return batch
 
     def __getitem__(self, index):
-        batch_indices = [idx for idx in range(index * self.batch_size, (index + 1) * self.batch_size)]
+        day = re.findall(r'\d+', self.df['img_name'].iloc[index])
+        batch_indices = [idx for idx in range(int(day[0]) * self.batch_size, (int(day[0]) + 1) * self.batch_size)]
         X, Y = self.__get_data(batch_indices)
         return X, Y
 
     def __len__(self):
-        return self.num_imgs // self.batch_size
+        return len(self.df) // self.batch_size

@@ -1,10 +1,199 @@
-2021-12-25 11:58:33.899620: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+2022-01-09 23:59:09.957389: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2021-12-25 11:58:34.589859: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 9618 MB memory:  -> device: 0, name: GeForce RTX 2080 Ti, pci bus id: 0000:3b:00.0, compute capability: 7.5
-2021-12-25 11:58:56.382736: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
-2021-12-25 11:59:04.890696: I tensorflow/stream_executor/cuda/cuda_dnn.cc:369] Loaded cuDNN version 8201
-2021-12-25 11:59:05.787182: W tensorflow/stream_executor/gpu/asm_compiler.cc:77] Couldn't get ptxas version string: Internal: Running ptxas --version returned 32512
-2021-12-25 11:59:05.876113: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: ptxas exited with non-zero error code 32512, output: 
+2022-01-09 23:59:10.636289: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 9618 MB memory:  -> device: 0, name: GeForce RTX 2080 Ti, pci bus id: 0000:3b:00.0, compute capability: 7.5
+2022-01-09 23:59:36.926671: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+2022-01-09 23:59:47.330305: I tensorflow/stream_executor/cuda/cuda_dnn.cc:369] Loaded cuDNN version 8201
+2022-01-09 23:59:48.418041: W tensorflow/stream_executor/gpu/asm_compiler.cc:77] Couldn't get ptxas version string: Internal: Running ptxas --version returned 32512
+2022-01-09 23:59:48.507714: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: ptxas exited with non-zero error code 32512, output: 
 Relying on driver to perform ptx compilation. 
 Modify $PATH to customize ptxas location.
 This message will be only logged once.
+2022-01-09 23:59:56.659027: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-09 23:59:57.413191: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 7295 MB memory:  -> device: 0, name: GeForce GTX 1080, pci bus id: 0000:3b:00.0, compute capability: 6.1
+Traceback (most recent call last):
+  File "/gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/train.py", line 117, in <module>
+    train_init(num_days, img_path, img_shape, model, optimizer, num_epochs, batch_size, save_interval)
+  File "/gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/train.py", line 60, in train_init
+    train_loader = data_generator.DataGenerator(df_train, img_path, (img_shape, img_shape, 3),
+  File "/gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/data_generator.py", line 21, in __init__
+    self.num_imgs = len([name for name in os.listdir(self.img_path)
+  File "/gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/data_generator.py", line 22, in <listcomp>
+    if os.path.isfile(os.path.join(self.img_path, name))])
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/genericpath.py", line 30, in isfile
+    st = os.stat(path)
+KeyboardInterrupt
+2022-01-10 00:03:15.965794: W tensorflow/core/framework/op_kernel.cc:1680] Unknown: UnboundLocalError: local variable 'img' referenced before assignment
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/keras/utils/data_utils.py", line 563, in get_index
+    return _SHARED_SEQUENCES[uid][i]
+  File "/gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/data_generator.py", line 101, in __getitem__
+    X, Y = self.__get_data(batch_indices)
+  File "/gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/data_generator.py", line 86, in __get_data
+    xx, yy = self.generate_batch(self.df, idx)
+  File "/gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/data_generator.py", line 62, in generate_batch
+    seq_y.append(img)
+UnboundLocalError: local variable 'img' referenced before assignment
+"""
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/ops/script_ops.py", line 249, in __call__
+    ret = func(*args)
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 645, in wrapper
+    return func(*args, **kwargs)
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 892, in generator_py_func
+    values = next(generator_state.get_iterator(iterator_id))
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/keras/engine/data_adapter.py", line 822, in wrapped_generator
+    for data in generator_fn():
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/keras/utils/data_utils.py", line 782, in get
+    raise e
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/keras/utils/data_utils.py", line 773, in get
+    inputs = self.queue.get(block=True, timeout=5).get()
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/multiprocessing/pool.py", line 771, in get
+    raise self._value
+
+UnboundLocalError: local variable 'img' referenced before assignment
+
+
+Traceback (most recent call last):
+  File "/gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/train.py", line 117, in <module>
+    train_init(num_days, img_path, img_shape, model, optimizer, num_epochs, batch_size, save_interval)
+  File "/gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/train.py", line 83, in train_init
+    model.fit(train_loader, validation_data=val_loader, epochs=1, use_multiprocessing=True, workers=16)
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/keras/engine/training.py", line 1184, in fit
+    tmp_logs = self.train_function(iterator)
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py", line 885, in __call__
+    result = self._call(*args, **kwds)
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py", line 917, in _call
+    return self._stateless_fn(*args, **kwds)  # pylint: disable=not-callable
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/eager/function.py", line 3039, in __call__
+    return graph_function._call_flat(
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/eager/function.py", line 1963, in _call_flat
+    return self._build_call_outputs(self._inference_function.call(
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/eager/function.py", line 591, in call
+    outputs = execute.execute(
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/eager/execute.py", line 59, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+tensorflow.python.framework.errors_impl.UnknownError: 2 root error(s) found.
+  (0) Unknown:  UnboundLocalError: local variable 'img' referenced before assignment
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/keras/utils/data_utils.py", line 563, in get_index
+    return _SHARED_SEQUENCES[uid][i]
+  File "/gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/data_generator.py", line 101, in __getitem__
+    X, Y = self.__get_data(batch_indices)
+  File "/gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/data_generator.py", line 86, in __get_data
+    xx, yy = self.generate_batch(self.df, idx)
+  File "/gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/data_generator.py", line 62, in generate_batch
+    seq_y.append(img)
+UnboundLocalError: local variable 'img' referenced before assignment
+"""
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/ops/script_ops.py", line 249, in __call__
+    ret = func(*args)
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 645, in wrapper
+    return func(*args, **kwargs)
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 892, in generator_py_func
+    values = next(generator_state.get_iterator(iterator_id))
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/keras/engine/data_adapter.py", line 822, in wrapped_generator
+    for data in generator_fn():
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/keras/utils/data_utils.py", line 782, in get
+    raise e
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/keras/utils/data_utils.py", line 773, in get
+    inputs = self.queue.get(block=True, timeout=5).get()
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/multiprocessing/pool.py", line 771, in get
+    raise self._value
+
+UnboundLocalError: local variable 'img' referenced before assignment
+
+
+	 [[{{node PyFunc}}]]
+	 [[IteratorGetNext]]
+  (1) Unknown:  UnboundLocalError: local variable 'img' referenced before assignment
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/keras/utils/data_utils.py", line 563, in get_index
+    return _SHARED_SEQUENCES[uid][i]
+  File "/gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/data_generator.py", line 101, in __getitem__
+    X, Y = self.__get_data(batch_indices)
+  File "/gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/data_generator.py", line 86, in __get_data
+    xx, yy = self.generate_batch(self.df, idx)
+  File "/gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/data_generator.py", line 62, in generate_batch
+    seq_y.append(img)
+UnboundLocalError: local variable 'img' referenced before assignment
+"""
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/ops/script_ops.py", line 249, in __call__
+    ret = func(*args)
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/autograph/impl/api.py", line 645, in wrapper
+    return func(*args, **kwargs)
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 892, in generator_py_func
+    values = next(generator_state.get_iterator(iterator_id))
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/keras/engine/data_adapter.py", line 822, in wrapped_generator
+    for data in generator_fn():
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/keras/utils/data_utils.py", line 782, in get
+    raise e
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/keras/utils/data_utils.py", line 773, in get
+    inputs = self.queue.get(block=True, timeout=5).get()
+
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/multiprocessing/pool.py", line 771, in get
+    raise self._value
+
+UnboundLocalError: local variable 'img' referenced before assignment
+
+
+	 [[{{node PyFunc}}]]
+	 [[IteratorGetNext]]
+	 [[IteratorGetNext/_2]]
+0 successful operations.
+0 derived errors ignored. [Op:__inference_train_function_14382]
+
+Function call stack:
+train_function -> train_function
+
+2022-01-10 00:03:16.338174: W tensorflow/core/kernels/data/generator_dataset_op.cc:107] Error occurred when finalizing GeneratorDataset iterator: Failed precondition: Python interpreter state is not initialized. The process may be terminated.
+	 [[{{node PyFunc}}]]

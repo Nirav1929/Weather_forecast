@@ -1,0 +1,55 @@
+num_of_images in input  1
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n3h35>
+Subject: Job 783991: <#!/bin/tcsh;#BSUB -n 4;#BSUB -W 3000;#BSUB -q gpu;#BSUB -gpu "num=1:mode=shared:mps=yes:";#BSUB -R "select[rtx2080|| gtx1080|| p100]";#BSUB -R "rusage[mem=12GB]";#BSUB -o test_out.sst;#BSUB -e test_err.sst;conda activate /usr/local/usrapps/rhe/conda_ocean;python3 /gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/predict.py> in cluster <henry2> Done
+
+Job <#!/bin/tcsh;#BSUB -n 4;#BSUB -W 3000;#BSUB -q gpu;#BSUB -gpu "num=1:mode=shared:mps=yes:";#BSUB -R "select[rtx2080|| gtx1080|| p100]";#BSUB -R "rusage[mem=12GB]";#BSUB -o test_out.sst;#BSUB -e test_err.sst;conda activate /usr/local/usrapps/rhe/conda_ocean;python3 /gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/predict.py> was submitted from host <login02> by user <nkpatel8> in cluster <henry2> at Tue Jan 11 13:29:25 2022
+Job was executed on host(s) <4*n3h35>, in queue <gpu>, as user <nkpatel8> in cluster <henry2> at Tue Jan 11 13:29:30 2022
+</home/nkpatel8> was used as the home directory.
+</gpfs_share/rhe/nkpatel8/Ocean_SST> was used as the working directory.
+Started at Tue Jan 11 13:29:30 2022
+Terminated at Tue Jan 11 13:29:57 2022
+Results reported at Tue Jan 11 13:29:57 2022
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/tcsh
+#BSUB -n 4
+#BSUB -W 3000
+#BSUB -q gpu
+#BSUB -gpu "num=1:mode=shared:mps=yes:"
+#BSUB -R "select[rtx2080|| gtx1080|| p100]"
+#BSUB -R "rusage[mem=12GB]"
+#BSUB -o test_out.sst
+#BSUB -e test_err.sst
+conda activate /usr/local/usrapps/rhe/conda_ocean
+python3 /gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/predict.py
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   22.13 sec.
+    Max Memory :                                 96.20 MB
+    Average Memory :                             96.20 MB
+    Total Requested Memory :                     12288.00 MB
+    Delta Memory :                               12191.80 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   53 sec.
+    Turnaround time :                            32 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <test_err.sst> for stderr output of this job.
+

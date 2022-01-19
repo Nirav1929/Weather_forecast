@@ -1,0 +1,154 @@
+2022-01-06 15:39:24.861054: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-06 15:39:25.744279: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 2 MB memory:  -> device: 0, name: GeForce RTX 2080 Ti, pci bus id: 0000:3b:00.0, compute capability: 7.5
+2022-01-06 15:39:35.847560: W tensorflow/core/common_runtime/bfc_allocator.cc:457] Allocator (GPU_0_bfc) ran out of memory trying to allocate 864.0KiB (rounded to 884736)requested by op Mul
+If the cause is memory fragmentation maybe the environment variable 'TF_GPU_ALLOCATOR=cuda_malloc_async' will improve the situation. 
+Current allocation summary follows.
+Current allocation summary follows.
+2022-01-06 15:39:35.851354: I tensorflow/core/common_runtime/bfc_allocator.cc:1004] BFCAllocator dump for GPU_0_bfc
+2022-01-06 15:39:35.851442: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (256): 	Total Chunks: 33, Chunks in use: 33. 8.2KiB allocated for chunks. 8.2KiB in use in bin. 2.4KiB client-requested in use in bin.
+2022-01-06 15:39:35.851485: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (512): 	Total Chunks: 0, Chunks in use: 0. 0B allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2022-01-06 15:39:35.851522: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (1024): 	Total Chunks: 1, Chunks in use: 1. 1.2KiB allocated for chunks. 1.2KiB in use in bin. 1.0KiB client-requested in use in bin.
+2022-01-06 15:39:35.851557: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (2048): 	Total Chunks: 1, Chunks in use: 1. 2.8KiB allocated for chunks. 2.8KiB in use in bin. 2.5KiB client-requested in use in bin.
+2022-01-06 15:39:35.851591: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (4096): 	Total Chunks: 0, Chunks in use: 0. 0B allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2022-01-06 15:39:35.851628: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (8192): 	Total Chunks: 1, Chunks in use: 1. 13.5KiB allocated for chunks. 13.5KiB in use in bin. 13.5KiB client-requested in use in bin.
+2022-01-06 15:39:35.851664: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (16384): 	Total Chunks: 1, Chunks in use: 0. 25.0KiB allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2022-01-06 15:39:35.851700: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (32768): 	Total Chunks: 1, Chunks in use: 1. 54.0KiB allocated for chunks. 54.0KiB in use in bin. 54.0KiB client-requested in use in bin.
+2022-01-06 15:39:35.851736: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (65536): 	Total Chunks: 1, Chunks in use: 0. 108.0KiB allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2022-01-06 15:39:35.851774: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (131072): 	Total Chunks: 1, Chunks in use: 1. 216.0KiB allocated for chunks. 216.0KiB in use in bin. 216.0KiB client-requested in use in bin.
+2022-01-06 15:39:35.851809: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (262144): 	Total Chunks: 1, Chunks in use: 0. 432.0KiB allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2022-01-06 15:39:35.851843: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (524288): 	Total Chunks: 0, Chunks in use: 0. 0B allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2022-01-06 15:39:35.851879: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (1048576): 	Total Chunks: 1, Chunks in use: 1. 1.41MiB allocated for chunks. 1.41MiB in use in bin. 864.0KiB client-requested in use in bin.
+2022-01-06 15:39:35.851928: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (2097152): 	Total Chunks: 0, Chunks in use: 0. 0B allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2022-01-06 15:39:35.852691: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (4194304): 	Total Chunks: 0, Chunks in use: 0. 0B allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2022-01-06 15:39:35.852726: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (8388608): 	Total Chunks: 0, Chunks in use: 0. 0B allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2022-01-06 15:39:35.852759: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (16777216): 	Total Chunks: 0, Chunks in use: 0. 0B allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2022-01-06 15:39:35.852792: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (33554432): 	Total Chunks: 0, Chunks in use: 0. 0B allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2022-01-06 15:39:35.852824: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (67108864): 	Total Chunks: 0, Chunks in use: 0. 0B allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2022-01-06 15:39:35.852857: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (134217728): 	Total Chunks: 0, Chunks in use: 0. 0B allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2022-01-06 15:39:35.852890: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (268435456): 	Total Chunks: 0, Chunks in use: 0. 0B allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2022-01-06 15:39:35.852936: I tensorflow/core/common_runtime/bfc_allocator.cc:1027] Bin for 864.0KiB was 512.0KiB, Chunk State: 
+2022-01-06 15:39:35.852966: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Next region of size 2359296
+2022-01-06 15:39:35.853001: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050800000 of size 1280 next 1
+2022-01-06 15:39:35.853031: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050800500 of size 256 next 2
+2022-01-06 15:39:35.853060: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050800600 of size 256 next 3
+2022-01-06 15:39:35.853089: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050800700 of size 256 next 4
+2022-01-06 15:39:35.853117: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050800800 of size 256 next 5
+2022-01-06 15:39:35.853145: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050800900 of size 256 next 8
+2022-01-06 15:39:35.853173: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050800a00 of size 256 next 9
+2022-01-06 15:39:35.853201: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050800b00 of size 256 next 10
+2022-01-06 15:39:35.853229: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050800c00 of size 256 next 11
+2022-01-06 15:39:35.853257: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050800d00 of size 256 next 12
+2022-01-06 15:39:35.853285: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050800e00 of size 256 next 13
+2022-01-06 15:39:35.853313: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050800f00 of size 256 next 14
+2022-01-06 15:39:35.853341: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050801000 of size 256 next 15
+2022-01-06 15:39:35.853369: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050801100 of size 256 next 18
+2022-01-06 15:39:35.853397: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050801200 of size 256 next 19
+2022-01-06 15:39:35.853425: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050801300 of size 256 next 20
+2022-01-06 15:39:35.853453: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050801400 of size 256 next 21
+2022-01-06 15:39:35.853481: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050801500 of size 256 next 22
+2022-01-06 15:39:35.854280: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050801600 of size 256 next 23
+2022-01-06 15:39:35.854325: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050801700 of size 256 next 24
+2022-01-06 15:39:35.854363: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050801800 of size 256 next 27
+2022-01-06 15:39:35.854393: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050801900 of size 256 next 28
+2022-01-06 15:39:35.854423: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050801a00 of size 256 next 29
+2022-01-06 15:39:35.854452: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050801b00 of size 256 next 30
+2022-01-06 15:39:35.854481: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050801c00 of size 256 next 31
+2022-01-06 15:39:35.854511: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050801d00 of size 256 next 6
+2022-01-06 15:39:35.854541: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050801e00 of size 2816 next 7
+2022-01-06 15:39:35.854570: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050802900 of size 256 next 32
+2022-01-06 15:39:35.854599: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050802a00 of size 256 next 35
+2022-01-06 15:39:35.854628: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050802b00 of size 256 next 36
+2022-01-06 15:39:35.854657: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050802c00 of size 256 next 37
+2022-01-06 15:39:35.854686: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050802d00 of size 256 next 38
+2022-01-06 15:39:35.854715: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050802e00 of size 256 next 39
+2022-01-06 15:39:35.854744: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050802f00 of size 256 next 40
+2022-01-06 15:39:35.854773: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050803000 of size 256 next 41
+2022-01-06 15:39:35.854803: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 2b2050803100 of size 25600 next 17
+2022-01-06 15:39:35.854832: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050809500 of size 13824 next 16
+2022-01-06 15:39:35.854862: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 2b205080cb00 of size 110592 next 26
+2022-01-06 15:39:35.854892: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b2050827b00 of size 55296 next 25
+2022-01-06 15:39:35.854934: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 2b2050835300 of size 442368 next 34
+2022-01-06 15:39:35.854964: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b20508a1300 of size 221184 next 33
+2022-01-06 15:39:35.854993: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 2b20508d7300 of size 1477888 next 18446744073709551615
+2022-01-06 15:39:35.855021: I tensorflow/core/common_runtime/bfc_allocator.cc:1065]      Summary of in-use Chunks by size: 
+2022-01-06 15:39:35.855057: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 33 Chunks of size 256 totalling 8.2KiB
+2022-01-06 15:39:35.855089: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 1280 totalling 1.2KiB
+2022-01-06 15:39:35.855120: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 2816 totalling 2.8KiB
+2022-01-06 15:39:35.855152: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 13824 totalling 13.5KiB
+2022-01-06 15:39:35.855183: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 55296 totalling 54.0KiB
+2022-01-06 15:39:35.855215: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 221184 totalling 216.0KiB
+2022-01-06 15:39:35.855246: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 1477888 totalling 1.41MiB
+2022-01-06 15:39:35.855277: I tensorflow/core/common_runtime/bfc_allocator.cc:1072] Sum Total of in-use chunks: 1.70MiB
+2022-01-06 15:39:35.856060: I tensorflow/core/common_runtime/bfc_allocator.cc:1074] total_region_allocated_bytes_: 2359296 memory_limit_: 2359296 available bytes: 0 curr_region_allocation_bytes_: 4718592
+2022-01-06 15:39:35.856142: I tensorflow/core/common_runtime/bfc_allocator.cc:1080] Stats: 
+Limit:                         2359296
+InUse:                         1780736
+MaxInUse:                      1780736
+NumAllocs:                          51
+MaxAllocSize:                  1477888
+Reserved:                            0
+PeakReserved:                        0
+LargestFreeBlock:                    0
+
+2022-01-06 15:39:35.856191: W tensorflow/core/common_runtime/bfc_allocator.cc:468] ***___****_________________************************************************xxxxxxxxxxxxxxxxxxxxxxxxx
+2022-01-06 15:39:35.856274: W tensorflow/core/framework/op_kernel.cc:1680] Resource exhausted: failed to allocate memory
+Traceback (most recent call last):
+  File "/gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/predict.py", line 55, in <module>
+    model = model.CnnAutoEncoder((num_days, img_shape, img_shape, 3), batch_size).forward()
+  File "/gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/model.py", line 33, in __init__
+    self.encoder = Conv3D(128, (3, 3, 3), activation='leaky_relu', padding="same")(self.encoder)
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/keras/engine/base_layer.py", line 996, in __call__
+    return self._functional_construction_call(inputs, args, kwargs,
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/keras/engine/base_layer.py", line 1134, in _functional_construction_call
+    outputs = self._keras_tensor_symbolic_call(
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/keras/engine/base_layer.py", line 867, in _keras_tensor_symbolic_call
+    return self._infer_output_signature(inputs, args, kwargs, input_masks)
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/keras/engine/base_layer.py", line 905, in _infer_output_signature
+    self._maybe_build(inputs)
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/keras/engine/base_layer.py", line 2667, in _maybe_build
+    self.build(input_shapes)  # pylint:disable=not-callable
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/keras/layers/convolutional.py", line 201, in build
+    self.kernel = self.add_weight(
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/keras/engine/base_layer.py", line 666, in add_weight
+    variable = self._add_variable_with_custom_getter(
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/training/tracking/base.py", line 813, in _add_variable_with_custom_getter
+    new_variable = getter(
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/keras/engine/base_layer_utils.py", line 127, in make_variable
+    return tf_variables.VariableV1(
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/ops/variables.py", line 266, in __call__
+    return cls._variable_v1_call(*args, **kwargs)
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/ops/variables.py", line 212, in _variable_v1_call
+    return previous_getter(
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/ops/variables.py", line 205, in <lambda>
+    previous_getter = lambda **kwargs: default_variable_creator(None, **kwargs)
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/ops/variable_scope.py", line 2612, in default_variable_creator
+    return resource_variable_ops.ResourceVariable(
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/ops/variables.py", line 270, in __call__
+    return super(VariableMetaclass, cls).__call__(*args, **kwargs)
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/ops/resource_variable_ops.py", line 1602, in __init__
+    self._init_from_args(
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/ops/resource_variable_ops.py", line 1740, in _init_from_args
+    initial_value = initial_value()
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/keras/initializers/initializers_v2.py", line 523, in __call__
+    return self._random_generator.random_uniform(shape, -limit, limit, dtype)
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/keras/initializers/initializers_v2.py", line 978, in random_uniform
+    return op(
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/util/dispatch.py", line 206, in wrapper
+    return target(*args, **kwargs)
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/ops/random_ops.py", line 315, in random_uniform
+    result = math_ops.add(result * (maxval - minval), minval, name=name)
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/ops/math_ops.py", line 1367, in binary_op_wrapper
+    return func(x, y, name=name)
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/ops/math_ops.py", line 1710, in _mul_dispatch
+    return multiply(x, y, name=name)
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/util/dispatch.py", line 206, in wrapper
+    return target(*args, **kwargs)
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/ops/math_ops.py", line 530, in multiply
+    return gen_math_ops.mul(x, y, name)
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/ops/gen_math_ops.py", line 6236, in mul
+    _ops.raise_from_not_ok_status(e, name)
+  File "/usr/local/usrapps/rhe/conda_ocean/lib/python3.9/site-packages/tensorflow/python/framework/ops.py", line 6941, in raise_from_not_ok_status
+    six.raise_from(core._status_to_exception(e.code, message), None)
+  File "<string>", line 3, in raise_from
+tensorflow.python.framework.errors_impl.ResourceExhaustedError: failed to allocate memory [Op:Mul]

@@ -44,10 +44,23 @@ def root_mean_squared_error(y_true, y_pred):
     return K.sqrt(K.mean(K.square(y_pred - y_true)))
 
 
-
 def train_init(num_days, img_path, img_shape, model, optimizer, num_epochs, batch_size, save_interval):
-    data_generator_obj = data_generator.DataGenerator(img_path, (img_shape, img_shape, 3),
+    num_imgs = len([name for name in os.listdir(img_path)
+                    if os.path.isfile(os.path.join(img_path, name))])
+    print("num_of_images in input ", num_imgs)
+    df = pd.DataFrame(columns=['img_name'])
+    # for i in range(num_imgs):
+    #     df.loc[i] = ["day_" + str(i)]
+    for i, img in enumerate(os.listdir(img_path)):
+        df.loc[i] = img
+
+    data_generator_obj = data_generator.DataGenerator(df, img_path, (img_shape, img_shape, 3),
                                                       batch_size, 3, num_days, num_days)
+    df_train, df_val = data_generator_obj.create_train_val_split(val_split=0.2)
+    train_loader = data_generator.DataGenerator(df_train, img_path, (img_shape, img_shape, 3),
+                                                batch_size, 3, num_days, num_days)
+    val_loader = data_generator.DataGenerator(df_val, img_path, (img_shape, img_shape, 3),
+                                              batch_size, 3, num_days, num_days)
     # physical_devices = tf.config.list_physical_devices('GPU')
     #
     # tf.config.experimental.set_memory_growth(physical_devices[0], True)
@@ -67,7 +80,7 @@ def train_init(num_days, img_path, img_shape, model, optimizer, num_epochs, batc
     # save_interval, learning_rate, batch_size)
     model.compile(optimizer=optimizer, loss=root_mean_squared_error)
     for epoch in range(num_epochs):
-        model.fit(data_generator_obj, epochs=1, use_multiprocessing=True, workers=16)
+        model.fit(train_loader, validation_data=val_loader, epochs=1, use_multiprocessing=True, workers=16)
         model.save_weights("./model" + "model_after" + str(epoch))
 
 
