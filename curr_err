@@ -1,0 +1,33 @@
+2022-01-28 15:21:05.817469: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-28 15:21:13.153345: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 1653 MB memory:  -> device: 0, name: GeForce RTX 2080 Ti, pci bus id: 0000:3b:00.0, compute capability: 7.5
+2022-01-28 15:21:15.371111: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+2022-01-28 15:21:37.171857: E tensorflow/stream_executor/cuda/cuda_dnn.cc:374] Could not create cudnn handle: CUDNN_STATUS_NOT_INITIALIZED
+2022-01-28 15:21:37.172010: E tensorflow/stream_executor/cuda/cuda_dnn.cc:382] Possibly insufficient driver version: 450.51.5
+Traceback (most recent call last):
+  File "/gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/train.py", line 118, in <module>
+    train_init(num_days, img_path, img_shape, model, optimizer, num_epochs, batch_size, save_interval)
+  File "/gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/train.py", line 84, in train_init
+    model.fit(train_loader, validation_data = val_loader, epochs=1, use_multiprocessing=True, workers=16)
+  File "/usr/local/usrapps/rhe/conda_ocean_new/lib/python3.9/site-packages/keras/engine/training.py", line 1184, in fit
+    tmp_logs = self.train_function(iterator)
+  File "/usr/local/usrapps/rhe/conda_ocean_new/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py", line 885, in __call__
+    result = self._call(*args, **kwds)
+  File "/usr/local/usrapps/rhe/conda_ocean_new/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py", line 950, in _call
+    return self._stateless_fn(*args, **kwds)
+  File "/usr/local/usrapps/rhe/conda_ocean_new/lib/python3.9/site-packages/tensorflow/python/eager/function.py", line 3039, in __call__
+    return graph_function._call_flat(
+  File "/usr/local/usrapps/rhe/conda_ocean_new/lib/python3.9/site-packages/tensorflow/python/eager/function.py", line 1963, in _call_flat
+    return self._build_call_outputs(self._inference_function.call(
+  File "/usr/local/usrapps/rhe/conda_ocean_new/lib/python3.9/site-packages/tensorflow/python/eager/function.py", line 591, in call
+    outputs = execute.execute(
+  File "/usr/local/usrapps/rhe/conda_ocean_new/lib/python3.9/site-packages/tensorflow/python/eager/execute.py", line 59, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+tensorflow.python.framework.errors_impl.UnknownError:  Failed to get convolution execution plan. This is probably because cuDNN failed to initialize, so try looking to see if a warning log message was printed above.
+	 [[node model/conv3d/Conv3D (defined at gpfs_share/rhe/nkpatel8/Ocean_SST/scripts/train.py:84) ]] [Op:__inference_train_function_14397]
+
+Function call stack:
+train_function
+
+2022-01-28 15:21:37.602747: W tensorflow/core/kernels/data/generator_dataset_op.cc:107] Error occurred when finalizing GeneratorDataset iterator: Failed precondition: Python interpreter state is not initialized. The process may be terminated.
+	 [[{{node PyFunc}}]]

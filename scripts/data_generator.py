@@ -58,6 +58,8 @@ class DataGenerator(keras.utils.Sequence):
                 seq_x.append(img)
             iob = True
         if out_end_ix > self.num_imgs - 1:
+            img = np.array(Image.open(self.img_path / f"day_{index}.jpeg"), dtype=np.float64)
+            img = self.add_padding(img)
             for idx in range(self.steps_out):
                 seq_y.append(img)
             oob = True

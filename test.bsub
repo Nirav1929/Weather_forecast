@@ -1,5 +1,5 @@
 #!/bin/tcsh
-#BSUB -n 4
+#BSUB -n 2
 #BSUB -W 3000
 #BSUB -q gpu
 #BSUB -gpu "num=1:mode=shared:mps=yes:"

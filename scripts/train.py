@@ -79,8 +79,9 @@ def train_init(num_days, img_path, img_shape, model, optimizer, num_epochs, batc
     # train_val_obj = train_val(df_train, df_val, train_loader, val_loader, model, optimizer, num_epochs, transform,
     # save_interval, learning_rate, batch_size)
     model.compile(optimizer=optimizer, loss=root_mean_squared_error)
+    model.load_weights('/gpfs_share/rhe/nkpatel8/Ocean_SST/model/modelmodel_after4')
     for epoch in range(num_epochs):
-        model.fit(train_loader, validation_data=val_loader, epochs=1, use_multiprocessing=True, workers=16)
+        model.fit(train_loader, validation_data = val_loader, epochs=1, use_multiprocessing=True, workers=16)
         model.save_weights("./model" + "model_after" + str(epoch))
 
 
@@ -90,7 +91,7 @@ if __name__ == "__main__":
     parser.add_argument('--learning_rate', help='Set learning rate for the model', type=float, default=1e-4)
     parser.add_argument('--image_path',
                         help='Describe the image df path which store image patha and corresponding label',
-                        type=str, default='/gpfs_common/share02/rhe/nkpatel8/SST_imgs/')
+                        type=str, default='/gpfs_common/share02/rhe/nkpatel8/SST_imgs_new/')
     parser.add_argument('--batch_size', help="Set the batch size", type=int, default=1)
     parser.add_argument('--save_interval', help='Number of epcohs interval after which we save result and model',
                         type=int, default=2

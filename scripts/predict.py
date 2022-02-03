@@ -57,7 +57,7 @@ if __name__ == "__main__":
     model = model.CnnAutoEncoder((num_days, img_shape, img_shape, 3), batch_size).forward()
     optimizer = keras.optimizers.Adam(learning_rate=1e-4)
     model.compile(optimizer=optimizer, loss=root_mean_squared_error)
-    model.load_weights(filepath=args.model_path)
+#    model.load_weights(filepath=args.model_path)
     num_imgs = len([name for name in os.listdir(test_img_path)
                     if os.path.isfile(os.path.join(test_img_path, name))])
     print("num_of_images in input ", num_imgs)
